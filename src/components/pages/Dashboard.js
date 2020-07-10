@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+
 import NewsItem from '../layout/NewsItem';
 
-const Dashboard = () => {
+const Dashboard = ({ articles, user } = this.props) => {
   const Wrapper = styled.section`
     width: 100%;
   `;
@@ -105,24 +107,9 @@ const Dashboard = () => {
     padding: 20px 0;
   `;
 
-  const Articles = [
-    {
-      url: 'https://www.clickorlando.com/resizer/Jpt8mNL-CQcJS36yiJ6wJyNcnuM=/520x347/smart/filters:format(jpeg):strip_exif(true):strip_icc(true):no_upscale(true):quality(65)/cloudfront-us-east-1.images.arcpublishing.com/gmg/OEBI4UCVP5CKJDVLIEBQSW7ZFU.webp',
-      title: 'SpaceX Launches Falcon 9',
-      author: 'spacex.com',
-      category: 'Technology'
-    },
-    {
-      url: 'https://www.clickorlando.com/resizer/Jpt8mNL-CQcJS36yiJ6wJyNcnuM=/520x347/smart/filters:format(jpeg):strip_exif(true):strip_icc(true):no_upscale(true):quality(65)/cloudfront-us-east-1.images.arcpublishing.com/gmg/OEBI4UCVP5CKJDVLIEBQSW7ZFU.webp',
-      title: 'SpaceX Launches Falcon 9',
-      author: 'spacex.com',
-      category: 'Technology'
-    }
-  ];
-
   return (
     <Wrapper>
-      <Greeting>Hi, Josh</Greeting>
+      <Greeting>Hi, {user.name}</Greeting>
       <SectionHeader>How you spent your time today</SectionHeader>
       <Graph></Graph>
       <SectionHeader>How you felt about today</SectionHeader>
@@ -145,11 +132,16 @@ const Dashboard = () => {
         <SectionHeader2>
           These articles may help you while working from home
         </SectionHeader2>
-        <NewsItem article={Articles[0]} />
-        <NewsItem article={Articles[1]} />
+        <NewsItem article={articles[0]} />
+        <NewsItem article={articles[1]} />
       </NewsBlock>
     </Wrapper>
   );
 };
 
-export default Dashboard;
+const mapStateToProps = (state) => ({
+  articles: state.articles,
+  user: state.curUser,
+});
+
+export default connect(mapStateToProps)(Dashboard);
