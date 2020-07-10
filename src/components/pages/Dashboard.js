@@ -1,112 +1,114 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import NewsItem from '../layout/NewsItem';
 
+const Wrapper = styled.section`
+  width: 100%;
+`;
+
+const Greeting = styled.h1`
+  margin: 48px 20px 0 20px;
+
+  font-size: 24px;
+  line-height: 120%;
+`;
+
+const SectionHeader = styled.h2`
+  margin: 20px 20px 0 20px;
+
+  font-size: 18px;
+  line-height: 120%;
+`;
+
+const Graph = styled.section`
+  margin: 20px 20px 30px 20px;
+  height: 113px;
+
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  box-sizing: border-box;
+  border-radius: 8px;
+`;
+
+const Stat = styled.p`
+  width: 18px;
+  height: 38px;
+
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 120%;
+
+  color: #4695f8;
+`;
+
+const Stat2 = styled(Stat)`
+  color: #faca78;
+`;
+
+const Stat3 = styled(Stat)`
+  color: #aaaaaa;
+`;
+
+const Label = styled.p`
+  width: 77px;
+  height: 19px;
+
+  font-size: 16px;
+  line-height: 120%;
+  text-align: center;
+
+  color: #222222;
+`;
+
+const StatContainer = styled.section`
+  margin: 20px 0;
+  width: 100%;
+  height: 84px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
+const SingleStat = styled.section`
+  position: relative;
+  height: 70px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Button = styled.button`
+  display: flex;
+  flex-direction: column;
+  padding: 8px 14px;
+  align-items: center;
+
+  margin: 40px auto 30px auto;
+  width: 253px;
+
+  background: #3ab5ad;
+  border-radius: 27px;
+  border: none;
+  color: #ffffff;
+`;
+
+const NewsBlock = styled.section`
+  width: 100%;
+  background: #f8f8f8;
+  padding-bottom: 100px;
+`;
+
+const SectionHeader2 = styled(SectionHeader)`
+  padding: 20px 0 0 0;
+`;
+
 const Dashboard = ({ articles, user } = this.props) => {
-  const Wrapper = styled.section`
-    width: 100%;
-  `;
-
-  const Greeting = styled.h1`
-    margin: 48px 20px 0 20px;
-
-    font-size: 24px;
-    line-height: 120%;
-  `;
-
-  const SectionHeader = styled.h2`
-    margin: 20px 20px 0 20px;
-
-    font-size: 18px;
-    line-height: 120%;
-  `;
-
-  const Graph = styled.section`
-    margin: 20px 20px;
-    height: 113px;
-
-    background: #ffffff;
-    border: 1px solid #cccccc;
-    box-sizing: border-box;
-    border-radius: 8px;
-  `;
-
-  const Stat = styled.p`
-    width: 18px;
-    height: 38px;
-
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 120%;
-
-    color: #4695f8;
-  `;
-
-  const Stat2 = styled(Stat)`
-    color: #faca78;
-  `;
-
-  const Stat3 = styled(Stat)`
-    color: #aaaaaa;
-  `;
-
-  const Label = styled.p`
-    width: 77px;
-    height: 19px;
-
-    font-size: 16px;
-    line-height: 120%;
-    text-align: center;
-
-    color: #222222;
-  `;
-
-  const StatContainer = styled.section`
-    margin: 20px 0;
-    width: 100%;
-    height: 84px;
-
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-  `;
-
-  const SingleStat = styled.section`
-    position: relative;
-    height: 70px;
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-  `;
-
-  const Button = styled.button`
-    display: flex;
-    flex-direction: column;
-    padding: 8px 14px;
-
-    margin: 40px auto;
-    width: 253px;
-
-    background: #3ab5ad;
-    border-radius: 27px;
-    border: none;
-    color: #ffffff;
-  `;
-
-  const NewsBlock = styled.section`
-    width: 100%;
-    background: #e5e5e5;
-    padding-bottom: 100px;
-  `;
-
-  const SectionHeader2 = styled(SectionHeader)`
-    padding: 20px 0;
-  `;
-
   return (
     <Wrapper>
       <Greeting>Hi, {user.name}</Greeting>
@@ -127,13 +129,26 @@ const Dashboard = ({ articles, user } = this.props) => {
           <Label>No response</Label>
         </SingleStat>
       </StatContainer>
-      <Button>View your words and check in more</Button>
+      <Button>View responses and check in</Button>
       <NewsBlock>
         <SectionHeader2>
           These articles may help you while working from home
         </SectionHeader2>
-        <NewsItem article={articles[0]} />
-        <NewsItem article={articles[1]} />
+        {articles.map((article) => {
+          return <NewsItem article={article} />;
+        })}
+        <Link
+          to='/tips'
+          style={{
+            textDecoration: 'none',
+            color: '#3AB5AD',
+            margin: '5px auto',
+            textAlign: 'center',
+            display: 'block',
+          }}
+        >
+          More tips
+        </Link>
       </NewsBlock>
     </Wrapper>
   );

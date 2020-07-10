@@ -5,37 +5,37 @@ import CalendarSVG from '../../img/calendar.svg';
 import GridSVG from '../../img/grid.svg';
 import BookSVG from '../../img/book.svg';
 
-const Navbar = () => {
-  const Wrapper = styled.section`
-    position: fixed;
-    width: 100%;
-    height: 80px;
-    bottom: 0px;
+const Wrapper = styled.section`
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  bottom: 0px;
+  z-index: 10;
 
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 
-    background: #ffffff;
-    box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.1);
-  `;
+  background: #ffffff;
+  box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.1);
+`;
 
-  const Frame = styled.section`
-    position: relative;
-    width: 80px;
-    height: 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-  `;
+const Frame = styled.section`
+  position: relative;
+  width: 80px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
 
-  const Icon = styled.img`
-    padding-top: 5px;
-    height: 28px;
-  `;
+const Icon = styled.img`
+  padding-top: 5px;
+  height: 28px;
+`;
 
-  const NavText = styled.p`
+const NavText = styled.p`
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -43,6 +43,7 @@ const Navbar = () => {
     text-align: center;
   `;
 
+const Navbar = () => {
   return (
     <Wrapper>
       <Link to='/schedule' style={{ textDecoration: 'none', color: '#000000' }}>
