@@ -135,7 +135,7 @@ const Dashboard = ({ articles, user } = this.props) => {
           These articles may help you while working from home
         </SectionHeader2>
         {articles.map((article) => {
-          return <NewsItem article={article} />;
+          return <NewsItem article={article} key={article.id} />;
         })}
         <Link
           to='/tips'

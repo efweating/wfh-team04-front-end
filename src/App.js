@@ -17,6 +17,7 @@ const initialState = {
       title: 'SpaceX Launches Falcon 9',
       author: 'spacex.com',
       category: 'Technology',
+      id: 1,
     },
     {
       url:
@@ -24,6 +25,7 @@ const initialState = {
       title: 'SpaceX Launches Falcon 9',
       author: 'spacex.com',
       category: 'Technology',
+      id: 2,
     },
     {
       url:
@@ -31,6 +33,7 @@ const initialState = {
       title: 'SpaceX Launches Falcon 9',
       author: 'spacex.com',
       category: 'Technology',
+      id: 3,
     },
   ],
   curUser: {

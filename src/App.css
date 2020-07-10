@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+@font-face {
+  font-family: Avenir;
+  src: url('./fonts/AvenirLTStd-Roman.otf') format('opentype');
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', 'Serif';
+  font-family: 'Avenir', 'Serif';
+  font-weight: 100;
 }
 
 .navbar-active {
