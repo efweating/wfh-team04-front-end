@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import CalendarSVG from '../../img/calendar.svg';
+import GridSVG from '../../img/grid.svg';
+import BookSVG from '../../img/book.svg';
 
 const Navbar = () => {
   const Wrapper = styled.section`
@@ -27,9 +30,9 @@ const Navbar = () => {
     align-items: center;
   `;
 
-  const Icon = styled.i`
+  const Icon = styled.img`
     padding-top: 5px;
-    font-size: 25px;
+    height: 28px;
   `;
 
   const NavText = styled.p`
@@ -44,19 +47,19 @@ const Navbar = () => {
     <Wrapper>
       <Link to='/schedule' style={{ textDecoration: 'none', color: '#000000' }}>
         <Frame>
-          <Icon className='far fa-calendar fa-2x'></Icon>
+          <Icon src={CalendarSVG} />
           <NavText>Schedule</NavText>
         </Frame>
       </Link>
       <Link to='/' style={{ textDecoration: 'none', color: '#000000' }}>
         <Frame>
-          <Icon className='fas fa-th-large fa-2x'></Icon>
+          <Icon src={GridSVG} />
           <NavText>Dashboard</NavText>
         </Frame>
       </Link>
       <Link to='/tips' style={{ textDecoration: 'none', color: '#000000' }}>
         <Frame>
-          <Icon className='fas fa-book fa-2x'></Icon>
+          <Icon src={BookSVG} />
           <NavText>Tips</NavText>
         </Frame>
       </Link>

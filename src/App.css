@@ -6,3 +6,7 @@
   box-sizing: border-box;
   font-family: 'Montserrat', 'Serif';
 }
+
+.navbar-active {
+  color: #3ab5ad;
+}
