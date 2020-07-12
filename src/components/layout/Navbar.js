@@ -46,13 +46,13 @@ const NavText = styled.p`
 const Navbar = () => {
   return (
     <Wrapper>
-      <Link to='/schedule' style={{ textDecoration: 'none', color: '#000000' }}>
+      <Link to='/' style={{ textDecoration: 'none', color: '#000000' }}>
         <Frame>
           <Icon src={CalendarSVG} />
           <NavText>Schedule</NavText>
         </Frame>
       </Link>
-      <Link to='/' style={{ textDecoration: 'none', color: '#000000' }}>
+      <Link to='/dashboard' style={{ textDecoration: 'none', color: '#000000' }}>
         <Frame>
           <Icon src={GridSVG} />
           <NavText>Dashboard</NavText>
