@@ -1,15 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
-@font-face {
-  font-family: Avenir;
-  src: url('./fonts/AvenirLTStd-Roman.otf') format('opentype');
-}
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Avenir', 'Serif';
+  font-family: 'Nunito', 'Sans-Serif';
   font-weight: 100;
 }
 

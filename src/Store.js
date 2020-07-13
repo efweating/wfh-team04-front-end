@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './App';
 
 const initialState = {
@@ -39,12 +40,17 @@ const initialState = {
 
 function reducer(state = initialState, action) {
   switch (action.type) {
+    case 'BYPASS_LOGIN':
+      return {
+        ...state,
+        loggedIn: true,
+      };
     default:
       return state;
   }
 }
 
-const store = createStore(reducer);
+const store = createStore(reducer, composeWithDevTools());
 
 const Store = () => {
   return (
