@@ -24,8 +24,8 @@ function App({ loggedIn } = this.props) {
             render={() => (loggedIn ? <Redirect to='/' /> : <Login />)}
           />
           <Route
-            path='/dashboard'
-            render={() => (loggedIn ? <Dashboard /> : <Redirect to='/login' />)}
+            path='/schedule'
+            render={() => (loggedIn ? <Schedule /> : <Redirect to='/login' />)}
           />
           <Route
             path='/tips'
@@ -33,7 +33,7 @@ function App({ loggedIn } = this.props) {
           />
           <Route
             path='/'
-            render={() => (loggedIn ? <Schedule /> : <Redirect to='/login' />)}
+            render={() => (loggedIn ? <Dashboard /> : <Redirect to='/login' />)}
           />
         </Switch>
         {loggedIn && <Navbar />}

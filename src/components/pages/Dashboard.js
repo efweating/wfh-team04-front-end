@@ -96,6 +96,14 @@ const Button = styled.button`
   border-radius: 27px;
   border: none;
   color: #ffffff;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const NewsBlock = styled.section`
@@ -109,6 +117,10 @@ const SectionHeader2 = styled(SectionHeader)`
 `;
 
 const Dashboard = ({ articles, user } = this.props) => {
+  const viewStats = () => {
+    console.log('Checking stats!');
+  };
+
   return (
     <Wrapper>
       <Greeting>Hi, {user.name}</Greeting>
@@ -129,7 +141,7 @@ const Dashboard = ({ articles, user } = this.props) => {
           <Label>No response</Label>
         </SingleStat>
       </StatContainer>
-      <Button>View responses and check in</Button>
+      <Button onClick={viewStats}>View responses and check in</Button>
       <NewsBlock>
         <SectionHeader2>
           These articles may help you while working from home
