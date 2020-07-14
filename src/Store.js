@@ -30,6 +30,38 @@ const initialState = {
       category: 'Technology',
       id: 3,
     },
+    {
+      url:
+        'https://www.clickorlando.com/resizer/Jpt8mNL-CQcJS36yiJ6wJyNcnuM=/520x347/smart/filters:format(jpeg):strip_exif(true):strip_icc(true):no_upscale(true):quality(65)/cloudfront-us-east-1.images.arcpublishing.com/gmg/OEBI4UCVP5CKJDVLIEBQSW7ZFU.webp',
+      title: 'SpaceX Launches Falcon 9',
+      author: 'spacex.com',
+      category: 'Technology',
+      id: 4,
+    },
+    {
+      url:
+        'https://www.clickorlando.com/resizer/Jpt8mNL-CQcJS36yiJ6wJyNcnuM=/520x347/smart/filters:format(jpeg):strip_exif(true):strip_icc(true):no_upscale(true):quality(65)/cloudfront-us-east-1.images.arcpublishing.com/gmg/OEBI4UCVP5CKJDVLIEBQSW7ZFU.webp',
+      title: 'SpaceX Launches Falcon 9',
+      author: 'spacex.com',
+      category: 'Technology',
+      id: 5,
+    },
+    {
+      url:
+        'https://www.clickorlando.com/resizer/Jpt8mNL-CQcJS36yiJ6wJyNcnuM=/520x347/smart/filters:format(jpeg):strip_exif(true):strip_icc(true):no_upscale(true):quality(65)/cloudfront-us-east-1.images.arcpublishing.com/gmg/OEBI4UCVP5CKJDVLIEBQSW7ZFU.webp',
+      title: 'SpaceX Launches Falcon 9',
+      author: 'spacex.com',
+      category: 'Technology',
+      id: 6,
+    },
+    {
+      url:
+        'https://www.clickorlando.com/resizer/Jpt8mNL-CQcJS36yiJ6wJyNcnuM=/520x347/smart/filters:format(jpeg):strip_exif(true):strip_icc(true):no_upscale(true):quality(65)/cloudfront-us-east-1.images.arcpublishing.com/gmg/OEBI4UCVP5CKJDVLIEBQSW7ZFU.webp',
+      title: 'SpaceX Launches Falcon 9',
+      author: 'spacex.com',
+      category: 'Technology',
+      id: 7,
+    },
   ],
   curUser: {
     name: 'Josh',
@@ -75,8 +107,26 @@ const initialState = {
         id: 5,
       },
     ],
+    recommended: [
+      {
+        url:
+          'https://www.clickorlando.com/resizer/Jpt8mNL-CQcJS36yiJ6wJyNcnuM=/520x347/smart/filters:format(jpeg):strip_exif(true):strip_icc(true):no_upscale(true):quality(65)/cloudfront-us-east-1.images.arcpublishing.com/gmg/OEBI4UCVP5CKJDVLIEBQSW7ZFU.webp',
+        title: 'SpaceX Launches Falcon 9',
+        author: 'spacex.com',
+        category: 'Technology',
+        id: 1,
+      },
+      {
+        url:
+          'https://www.clickorlando.com/resizer/Jpt8mNL-CQcJS36yiJ6wJyNcnuM=/520x347/smart/filters:format(jpeg):strip_exif(true):strip_icc(true):no_upscale(true):quality(65)/cloudfront-us-east-1.images.arcpublishing.com/gmg/OEBI4UCVP5CKJDVLIEBQSW7ZFU.webp',
+        title: 'SpaceX Launches Falcon 9',
+        author: 'spacex.com',
+        category: 'Technology',
+        id: 2,
+      },
+    ],
   },
-  loggedIn: true,
+  loggedIn: false,
 };
 
 function reducer(state = initialState, action) {

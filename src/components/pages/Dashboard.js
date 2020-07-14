@@ -14,6 +14,7 @@ const Greeting = styled.h1`
 
   font-size: 24px;
   line-height: 120%;
+  font-weight: normal;
 `;
 
 const SectionHeader = styled.h2`
@@ -21,6 +22,7 @@ const SectionHeader = styled.h2`
 
   font-size: 18px;
   line-height: 120%;
+  font-weight: normal;
 `;
 
 const Graph = styled.section`
@@ -59,6 +61,7 @@ const Label = styled.p`
   font-size: 16px;
   line-height: 120%;
   text-align: center;
+  font-weight: normal;
 
   color: #222222;
 `;
@@ -96,6 +99,7 @@ const Button = styled.button`
   border-radius: 27px;
   border: none;
   color: #ffffff;
+  font-weight: 600;
 
   &:hover {
     cursor: pointer;
@@ -116,7 +120,9 @@ const SectionHeader2 = styled(SectionHeader)`
   padding: 20px 0 0 0;
 `;
 
-const Dashboard = ({ articles, user } = this.props) => {
+const Dashboard = ({ user } = this.props) => {
+  const { recommended } = user;
+
   const viewStats = () => {
     console.log('Checking stats!');
   };
@@ -146,7 +152,7 @@ const Dashboard = ({ articles, user } = this.props) => {
         <SectionHeader2>
           These articles may help you while working from home
         </SectionHeader2>
-        {articles.map((article) => {
+        {recommended.map((article) => {
           return <NewsItem article={article} key={article.id} />;
         })}
         <Link
@@ -157,6 +163,7 @@ const Dashboard = ({ articles, user } = this.props) => {
             margin: '5px auto',
             textAlign: 'center',
             display: 'block',
+            fontWeight: 600,
           }}
         >
           More tips
@@ -167,7 +174,6 @@ const Dashboard = ({ articles, user } = this.props) => {
 };
 
 const mapStateToProps = (state) => ({
-  articles: state.articles,
   user: state.curUser,
 });
 

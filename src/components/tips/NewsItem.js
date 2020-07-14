@@ -7,6 +7,7 @@ const Wrapper = styled.section`
   margin: 20px 20px;
 
   background: #ffffff;
+  border: 1px solid #f8f8f8;
   border-radius: 8px;
 
   display: grid;
@@ -30,8 +31,8 @@ const Description = styled.section`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+  justify-content: space-between;
+  padding: 16px 12px 12px 20px;
   grid-area: title;
   background: #ffffff;
   border-top-right-radius: 8px;
@@ -39,12 +40,13 @@ const Description = styled.section`
 `;
 
 const Title = styled.h2`
-  text-align: center;
   font-size: 14px;
+  font-weight: 600;
 `;
 
 const Author = styled.p`
   font-size: 12px;
+  font-size: normal;
 `;
 
 const NewsItem = ({ article } = this.props) => {
