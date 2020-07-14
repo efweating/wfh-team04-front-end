@@ -12,7 +12,7 @@ import Dashboard from './components/pages/Dashboard';
 import Schedule from './components/pages/Schedule';
 import Tips from './components/pages/Tips';
 import Navbar from './components/layout/Navbar';
-import Login from './components/pages/Login';
+import Login from './components/auth/Login';
 
 function App({ loggedIn } = this.props) {
   return (

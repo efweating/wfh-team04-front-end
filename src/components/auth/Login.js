@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 const Wrapper = styled.section`
   background: #3ab5ad;
   width: 100%;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 `;
 
 const Title = styled.h1`
@@ -187,7 +189,11 @@ const Login = ({ dispatch } = this.props) => {
         </OutsideSignin>
         <BetweenText>or</BetweenText>
         <InputBox id='loginEmail' placeholder='Email'></InputBox>
-        <InputBox id='loginPassword' placeholder='Password'></InputBox>
+        <InputBox
+          id='loginPassword'
+          placeholder='Password'
+          type='password'
+        ></InputBox>
         <SignInButton onClick={signInNormal}>Sign In</SignInButton>
         <EndLink>
           Don't have an account?{' '}

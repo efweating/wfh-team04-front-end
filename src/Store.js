@@ -34,8 +34,49 @@ const initialState = {
   curUser: {
     name: 'Josh',
     token: 'fakeToken',
+    eventCount: 6,
+    assigned: [
+      {
+        name: 'Create outline of presentation',
+        manager: 'Tim',
+        employee: 'Josh',
+        id: 1,
+      },
+    ],
+    events: [
+      {
+        name: 'Launch Party',
+        start: '11:00',
+        end: '12:00',
+        id: 1,
+      },
+      {
+        name: 'Demo Day',
+        start: '11:00',
+        end: '12:00',
+        id: 2,
+      },
+      {
+        name: 'Member Retreat',
+        start: '11:00',
+        end: '12:00',
+        id: 3,
+      },
+      {
+        name: 'Portfolio Review',
+        start: '11:00',
+        end: '12:00',
+        id: 4,
+      },
+      {
+        name: 'Framer Workshop',
+        start: '11:00',
+        end: '12:00',
+        id: 5,
+      },
+    ],
   },
-  loggedIn: false,
+  loggedIn: true,
 };
 
 function reducer(state = initialState, action) {

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import NewsItem from '../layout/NewsItem';
+import NewsItem from '../tips/NewsItem';
 
 const Wrapper = styled.section`
   width: 100%;
