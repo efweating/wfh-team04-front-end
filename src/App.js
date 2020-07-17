@@ -13,6 +13,7 @@ import Schedule from './components/pages/Schedule';
 import Tips from './components/pages/Tips';
 import Navbar from './components/layout/Navbar';
 import Login from './components/auth/Login';
+import SignIn from './components/auth/SignIn';
 
 function App({ loggedIn } = this.props) {
   return (
@@ -22,6 +23,10 @@ function App({ loggedIn } = this.props) {
           <Route
             path='/login'
             render={() => (loggedIn ? <Redirect to='/' /> : <Login />)}
+          />
+          <Route
+            path='/signin'
+            render={() => (loggedIn ? <Redirect to='/' /> : <SignIn />)}
           />
           <Route
             path='/schedule'

@@ -81,7 +81,7 @@ const NewsBlock = styled.section`
 const Tips = ({ articles, user }) => {
   return (
     <Wrapper>
-      <Greeting>Hi, {user.name}</Greeting>
+      <Greeting>Hi, {user.firstName}</Greeting>
       <SearchBar placeholder='Search here' />
       <CategoryContainer>
         <Category>Workspace</Category>

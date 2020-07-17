@@ -63,69 +63,25 @@ const initialState = {
       id: 7,
     },
   ],
-  curUser: {
-    name: 'Josh',
-    token: 'fakeToken',
-    eventCount: 6,
-    assigned: [
-      {
-        name: 'Create outline of presentation',
-        manager: 'Tim',
-        employee: 'Josh',
-        id: 1,
-      },
-    ],
-    events: [
-      {
-        name: 'Launch Party',
-        start: '11:00',
-        end: '12:00',
-        id: 1,
-      },
-      {
-        name: 'Demo Day',
-        start: '11:00',
-        end: '12:00',
-        id: 2,
-      },
-      {
-        name: 'Member Retreat',
-        start: '11:00',
-        end: '12:00',
-        id: 3,
-      },
-      {
-        name: 'Portfolio Review',
-        start: '11:00',
-        end: '12:00',
-        id: 4,
-      },
-      {
-        name: 'Framer Workshop',
-        start: '11:00',
-        end: '12:00',
-        id: 5,
-      },
-    ],
-    recommended: [
-      {
-        url:
-          'https://www.clickorlando.com/resizer/Jpt8mNL-CQcJS36yiJ6wJyNcnuM=/520x347/smart/filters:format(jpeg):strip_exif(true):strip_icc(true):no_upscale(true):quality(65)/cloudfront-us-east-1.images.arcpublishing.com/gmg/OEBI4UCVP5CKJDVLIEBQSW7ZFU.webp',
-        title: 'SpaceX Launches Falcon 9',
-        author: 'spacex.com',
-        category: 'Technology',
-        id: 1,
-      },
-      {
-        url:
-          'https://www.clickorlando.com/resizer/Jpt8mNL-CQcJS36yiJ6wJyNcnuM=/520x347/smart/filters:format(jpeg):strip_exif(true):strip_icc(true):no_upscale(true):quality(65)/cloudfront-us-east-1.images.arcpublishing.com/gmg/OEBI4UCVP5CKJDVLIEBQSW7ZFU.webp',
-        title: 'SpaceX Launches Falcon 9',
-        author: 'spacex.com',
-        category: 'Technology',
-        id: 2,
-      },
-    ],
-  },
+  curUser: {},
+  recommended: [
+    {
+      url:
+        'https://www.clickorlando.com/resizer/Jpt8mNL-CQcJS36yiJ6wJyNcnuM=/520x347/smart/filters:format(jpeg):strip_exif(true):strip_icc(true):no_upscale(true):quality(65)/cloudfront-us-east-1.images.arcpublishing.com/gmg/OEBI4UCVP5CKJDVLIEBQSW7ZFU.webp',
+      title: 'SpaceX Launches Falcon 9',
+      author: 'spacex.com',
+      category: 'Technology',
+      id: 1,
+    },
+    {
+      url:
+        'https://www.clickorlando.com/resizer/Jpt8mNL-CQcJS36yiJ6wJyNcnuM=/520x347/smart/filters:format(jpeg):strip_exif(true):strip_icc(true):no_upscale(true):quality(65)/cloudfront-us-east-1.images.arcpublishing.com/gmg/OEBI4UCVP5CKJDVLIEBQSW7ZFU.webp',
+      title: 'SpaceX Launches Falcon 9',
+      author: 'spacex.com',
+      category: 'Technology',
+      id: 2,
+    },
+  ],
   loggedIn: false,
 };
 
@@ -135,6 +91,12 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         loggedIn: true,
+      };
+    case 'LOGIN_USER':
+      return {
+        ...state,
+        loggedIn: true,
+        curUser: action.payload,
       };
     default:
       return state;

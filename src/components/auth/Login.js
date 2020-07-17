@@ -40,7 +40,7 @@ const Subheader = styled.h2`
 
 const InputSection = styled.section`
   width: 100%;
-  height: 570px;
+  height: 570x;
   margin-top: 50px;
   padding-top: 50px;
 
@@ -121,7 +121,7 @@ const SignInButton = styled(OutsideSignin)`
 `;
 
 const EndLink = styled.p`
-  margin-top: 20px;
+  margin: 20px 0;
   text-align: center;
 
   font-weight: 600;
@@ -142,8 +142,7 @@ const EndLinkColor = styled.span`
 
 const Login = ({ dispatch } = this.props) => {
   const signInMicrosoft = () => {
-    console.log('Signing in with Microsoft!');
-    dispatch({ type: 'BYPASS_LOGIN' });
+    window.location.href = '/signin';
   };
 
   const signInGoogle = () => {

@@ -31,7 +31,7 @@ const SectionHeader = styled.h2`
 const Schedule = ({ user }) => {
   return (
     <Wrapper>
-      <Greeting>Hi, {user.name}</Greeting>
+      <Greeting>Hi, {user.firstName}</Greeting>
       <SectionHeader>
         You have{' '}
         {user.eventCount > 0

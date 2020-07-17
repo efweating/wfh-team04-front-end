@@ -120,16 +120,14 @@ const SectionHeader2 = styled(SectionHeader)`
   padding: 20px 0 0 0;
 `;
 
-const Dashboard = ({ user } = this.props) => {
-  const { recommended } = user;
-
+const Dashboard = ({ user, recommended } = this.props) => {
   const viewStats = () => {
     console.log('Checking stats!');
   };
 
   return (
     <Wrapper>
-      <Greeting>Hi, {user.name}</Greeting>
+      <Greeting>Hi, {user.firstName}</Greeting>
       <SectionHeader>How you spent your time today</SectionHeader>
       <Graph></Graph>
       <SectionHeader>How you felt about today</SectionHeader>
@@ -175,6 +173,7 @@ const Dashboard = ({ user } = this.props) => {
 
 const mapStateToProps = (state) => ({
   user: state.curUser,
+  recommended: state.recommended,
 });
 
 export default connect(mapStateToProps)(Dashboard);
