@@ -132,7 +132,8 @@ const SignIn = ({ dispatch }) => {
   };
 
   const loginTim = (user) => {
-    dispatch({ type: 'LOGIN_USER', payload: user });
+    console.log('Log in Tim!');
+    //dispatch({ type: 'LOGIN_USER', payload: user });
   };
 
   return (
