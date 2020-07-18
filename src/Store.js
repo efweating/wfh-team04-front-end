@@ -83,6 +83,7 @@ const initialState = {
     },
   ],
   loggedIn: false,
+  checkIn: {},
 };
 
 function reducer(state = initialState, action) {
@@ -97,6 +98,19 @@ function reducer(state = initialState, action) {
         ...state,
         loggedIn: true,
         curUser: action.payload,
+      };
+    case 'COMPLETE_ITEM':
+      return {
+        ...state,
+        checkIn: action.payload,
+        curUser: {
+          ...state.curUser,
+          responses: {
+            ...state.curUser.responses,
+            noresponse: state.curUser.responses.noresponse + 1,
+          },
+          eventCount: state.curUser.eventCount - 1,
+        },
       };
     default:
       return state;

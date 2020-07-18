@@ -17,6 +17,7 @@ const Wrapper = styled.section`
 
   &:hover {
     cursor: pointer;
+    background: #f8f8f8;
   }
 `;
 
@@ -51,9 +52,13 @@ const SubText = styled.p`
   color: #999999;
 `;
 
-const Assigned = ({ task }) => {
+const Assigned = ({ task, complete }) => {
+  const completeItem = () => {
+    complete(task);
+  }
+
   return (
-    <Wrapper>
+    <Wrapper onClick={completeItem}>
       <Icon src={Calendar} />
       <TextContainer>
         <MainText>{task.name}</MainText>

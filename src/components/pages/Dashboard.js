@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import NewsItem from '../tips/NewsItem';
+import StaticGraph from '../../img/dashboard.png';
 
 const Wrapper = styled.section`
   width: 100%;
@@ -25,12 +26,11 @@ const SectionHeader = styled.h2`
   font-weight: normal;
 `;
 
-const Graph = styled.section`
-  margin: 20px 20px 30px 20px;
+const Graph = styled.img`
+  margin: 20px 20px 20px 20px;
   height: 113px;
 
   background: #ffffff;
-  border: 1px solid #cccccc;
   box-sizing: border-box;
   border-radius: 8px;
 `;
@@ -129,7 +129,7 @@ const Dashboard = ({ user, recommended } = this.props) => {
     <Wrapper>
       <Greeting>Hi, {user.firstName}</Greeting>
       <SectionHeader>How you spent your time today</SectionHeader>
-      <Graph></Graph>
+      <Graph src={StaticGraph}></Graph>
       <SectionHeader>How you felt about today</SectionHeader>
       <StatContainer>
         <SingleStat>

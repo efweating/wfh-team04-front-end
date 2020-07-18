@@ -20,7 +20,8 @@ const user1 = {
       name: 'Create outline of presentation',
       manager: 'Tim',
       employee: 'Josh',
-      id: 1,
+      type: 'assigned',
+      id: 6,
     },
   ],
   events: [
@@ -28,33 +29,43 @@ const user1 = {
       name: 'Launch Party',
       start: '11:00',
       end: '12:00',
+      type: 'event',
       id: 1,
     },
     {
       name: 'Demo Day',
       start: '11:00',
       end: '12:00',
+      type: 'event',
       id: 2,
     },
     {
       name: 'Member Retreat',
       start: '11:00',
       end: '12:00',
+      type: 'event',
       id: 3,
     },
     {
       name: 'Portfolio Review',
       start: '11:00',
       end: '12:00',
+      type: 'event',
       id: 4,
     },
     {
       name: 'Framer Workshop',
       start: '11:00',
       end: '12:00',
+      type: 'event',
       id: 5,
     },
   ],
+  responses: {
+    productive: 0,
+    unproductive: 0,
+    noresponse: 0,
+  },
 };
 
 const user2 = {
@@ -142,7 +153,7 @@ const SignIn = ({ dispatch }) => {
         <HeaderImg src={Microsoft} />
         <HeaderTxt>Sign in with Microsoft</HeaderTxt>
       </HeaderSection>
-      <Intro>{`Choose a demo account to continue to [AppName]`}</Intro>
+      <Intro>{`Choose a demo account to continue to ADAPTIVE`}</Intro>
       <User user={user1} login={loginJosh} />
       <User user={user2} login={loginTim} />
       <UnlistedAccount

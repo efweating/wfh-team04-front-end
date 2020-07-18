@@ -173,7 +173,7 @@ const Login = ({ dispatch } = this.props) => {
 
   return (
     <Wrapper>
-      <Title>{`[AppName]`}</Title>
+      <Title>ADAPTIVE</Title>
       <Subheader>Productivity recipe for remote team.</Subheader>
       <InputSection>
         <OutsideSignin onClick={signInMicrosoft}>
