@@ -50,15 +50,21 @@ const Author = styled.p`
 `;
 
 const NewsItem = ({ article } = this.props) => {
+  const redirect = () => {
+    window.open(article.location, '_blank');
+  };
+
   return (
-    <Wrapper>
+    <Wrapper onClick={redirect}>
       <PhotoContainer>
         <Photo src={article.url} />
       </PhotoContainer>
       <Description>
         <Title>{article.title}</Title>
         <Author>
-          {article.category} * {article.author}
+          {article.category}
+          &nbsp;&nbsp;&nbsp;{`-`}&nbsp;&nbsp;&nbsp;
+          {article.author}
         </Author>
       </Description>
     </Wrapper>

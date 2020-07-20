@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Assigned from '../schedule/Assigned';
 import Scheduled from '../schedule/Scheduled';
+import ReactModal from 'react-modal';
 
 const Wrapper = styled.section`
   width: 100%;
@@ -76,9 +77,102 @@ const CompletedLink = styled.a`
   }
 `;
 
-const Schedule = ({ checkIn, user, dispatch }) => {
+const ModalStyle = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    height: '450px',
+    width: '300px',
+    background: '#ffffff',
+    borderRadius: '20px',
+  },
+  overlay: {
+    background: 'rgba(0, 0, 0, 0.4)',
+  },
+};
+
+ReactModal.setAppElement('#root');
+
+// Modal components
+const ModalHeader = styled.h2`
+  font-size: 18px;
+  line-height: 120%;
+  font-weight: normal;
+
+  margin-bottom: 10px;
+`;
+
+const ResponseContainer = styled.div`
+  display: flex;
+
+  justify-content: center;
+`;
+
+const ResponseButton = styled.button`
+  height: 31px;
+  padding: 8px 14px;
+  border: 1px solid #3ab5ad;
+  border-radius: 27px;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 110%;
+  color: #3ab5ad;
+  background: #ffffff;
+  margin-right: 10px;
+
+  &:focus {
+    outline: none;
+    background: #3ab5ad;
+    color: #ffffff;
+  }
+`;
+
+const CheckedButton = styled(ResponseButton)`
+  background: #3ab5ad;
+  color: #ffffff;
+`;
+
+const ResponseBox = styled.textarea`
+  padding: 20px;
+  margin: 20px auto;
+  height: 160px;
+  width: 99%;
+  background: #f8f8f8;
+  border-radius: 4px;
+  border: none;
+
+  color: #222222;
+  font-weight: 600;
+  font-size: 14px;
+
+  &:focus {
+    outline: 1px solid #3ab5ad;
+  }
+`;
+
+const SubmitButton = styled(CheckedButton)`
+  display: block;
+  margin: 0 auto;
+`;
+
+const Schedule = ({
+  checkIn,
+  checkInModal,
+  checkInModalState,
+  user,
+  dispatch,
+}) => {
   const addEvent = () => {
     console.log('Adding event!');
+  };
+
+  const placeholder = () => {
+    console.log('Haha you clicked me I guess');
   };
 
   const completeItem = (item) => {
@@ -101,15 +195,75 @@ const Schedule = ({ checkIn, user, dispatch }) => {
     dispatch({ type: 'COMPLETE_ITEM', payload: item });
   };
 
+  const openCheckIn = () => {
+    dispatch({ type: 'CHECKIN_MODAL', payload: true });
+  };
+
+  const closeCheckIn = () => {
+    dispatch({ type: 'CHECKIN_MODAL', payload: false });
+  };
+
+  const markProductive = (response) => {
+    dispatch({ type: 'MARK_TASK', payload: response });
+  };
+
+  const updateCheckResponse = () => {
+    const response = document.querySelector('#checkInResponseBox').value;
+
+    dispatch({ type: 'UPDATE_RESPONSE', payload: response });
+  };
+
+  const submitCheckIn = () => {
+    dispatch({ type: 'SUBMIT_CHECKIN' });
+    dispatch({ type: 'CHECKIN_MODAL', payload: false });
+  };
+
   return (
     <Wrapper>
+      <ReactModal
+        isOpen={checkInModal}
+        onRequestClose={closeCheckIn}
+        style={ModalStyle}
+        contentLabel='Check In Modal'
+      >
+        <ModalHeader>How did you feel during this event?</ModalHeader>
+        {checkIn.type === 'event' ? (
+          <Scheduled task={checkIn} check='true' complete={placeholder} />
+        ) : (
+          <Assigned task={checkIn} check='true' complete={placeholder} />
+        )}
+        <ResponseContainer>
+          {checkInModalState.button === 1 ? (
+            <CheckedButton>Productive</CheckedButton>
+          ) : (
+            <ResponseButton onClick={() => markProductive(1)}>
+              Productive
+            </ResponseButton>
+          )}
+          {checkInModalState.button === 2 ? (
+            <CheckedButton>Unproductive</CheckedButton>
+          ) : (
+            <ResponseButton onClick={() => markProductive(2)}>
+              Unproductive
+            </ResponseButton>
+          )}
+        </ResponseContainer>
+        <ResponseBox
+          placeholder='What are your thoughts on this event?'
+          onChange={updateCheckResponse}
+          id='checkInResponseBox'
+          value={checkInModalState.thoughts}
+        />
+        <SubmitButton onClick={submitCheckIn}>Submit</SubmitButton>
+      </ReactModal>
+
       <Greeting>Hi, {user.firstName}</Greeting>
       {Object.keys(checkIn).length > 0 && (
         <Completed>
           <CompletedPara>
             You have completed something! How did it go?
           </CompletedPara>
-          <CompletedLink>Check In</CompletedLink>
+          <CompletedLink onClick={openCheckIn}>Check In</CompletedLink>
         </Completed>
       )}
       <AddTask onClick={addEvent}>+ Add Event</AddTask>
@@ -125,7 +279,7 @@ const Schedule = ({ checkIn, user, dispatch }) => {
       {user.assigned.map((task) => {
         return <Assigned task={task} key={task.id} complete={completeItem} />;
       })}
-      {user.events.map((task, index) => {
+      {user.events.map((task) => {
         return <Scheduled task={task} key={task.id} complete={completeItem} />;
       })}
     </Wrapper>
@@ -135,6 +289,8 @@ const Schedule = ({ checkIn, user, dispatch }) => {
 const mapStateToProps = (state) => ({
   user: state.curUser,
   checkIn: state.checkIn,
+  checkInModal: state.checkInModal,
+  checkInModalState: state.checkInModalState,
 });
 
 export default connect(mapStateToProps)(Schedule);

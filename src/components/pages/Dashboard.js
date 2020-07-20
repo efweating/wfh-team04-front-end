@@ -133,16 +133,16 @@ const Dashboard = ({ user, recommended } = this.props) => {
       <SectionHeader>How you felt about today</SectionHeader>
       <StatContainer>
         <SingleStat>
-          <Stat>5</Stat>
+          <Stat>{user.responses.productive}</Stat>
           <Label>Productive</Label>
         </SingleStat>
         <SingleStat>
-          <Stat2>2</Stat2>
-          <Label>Could be better</Label>
+          <Stat2>{user.responses.unproductive}</Stat2>
+          <Label>Not Productive</Label>
         </SingleStat>
         <SingleStat>
-          <Stat3>3</Stat3>
-          <Label>No response</Label>
+          <Stat3>{user.responses.noresponse}</Stat3>
+          <Label>No Response</Label>
         </SingleStat>
       </StatContainer>
       <Button onClick={viewStats}>View responses and check in</Button>

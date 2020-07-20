@@ -52,13 +52,16 @@ const SubText = styled.p`
   color: #999999;
 `;
 
-const Assigned = ({ task, complete }) => {
+const Scheduled = ({ task, complete, check }) => {
   const completeItem = () => {
     complete(task);
-  }
+  };
 
   return (
-    <Wrapper onClick={completeItem}>
+    <Wrapper
+      onClick={completeItem}
+      style={(check && { border: 'none', width: '250px'})}
+    >
       <Icon src={Calendar} />
       <TextContainer>
         <MainText>{task.name}</MainText>
@@ -70,8 +73,8 @@ const Assigned = ({ task, complete }) => {
   );
 };
 
-Assigned.propTypes = {
+Scheduled.propTypes = {
   task: PropTypes.object.isRequired,
 };
 
-export default Assigned;
+export default Scheduled;

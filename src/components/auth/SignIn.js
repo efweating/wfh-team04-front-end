@@ -65,6 +65,7 @@ const user1 = {
     productive: 0,
     unproductive: 0,
     noresponse: 0,
+    complete: [],
   },
 };
 
