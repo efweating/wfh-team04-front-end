@@ -7,6 +7,7 @@ import ReactModal from 'react-modal';
 
 const Wrapper = styled.section`
   width: 100%;
+  padding-bottom: 100px;
 
   & > :last-child {
     border: none !important;
@@ -160,15 +161,62 @@ const SubmitButton = styled(CheckedButton)`
   margin: 0 auto;
 `;
 
+const ModalInput = styled.input`
+  height: 40px;
+  width: 99%;
+  padding: 20px;
+  margin: 10px auto;
+  background: #f8f8f8;
+  border-radius: 4px;
+  border: none;
+
+  color: #222222;
+  font-weight: 600;
+  font-size: 14px;
+
+  &:focus {
+    outline: 1px solid #3ab5ad;
+  }
+`;
+
 const Schedule = ({
   checkIn,
   checkInModal,
   checkInModalState,
+  addTaskModal,
+  addTaskModalState,
   user,
   dispatch,
 }) => {
   const addEvent = () => {
-    console.log('Adding event!');
+    dispatch({ type: 'ADDTASK_MODAL', payload: true });
+  };
+
+  const closeAddTaskModal = () => {
+    dispatch({ type: 'ADDTASK_MODAL', payload: false });
+  };
+
+  const updateTaskName = () => {
+    const name = document.querySelector('#addTaskName').value;
+
+    dispatch({ type: 'UPDATE_TASKNAME', payload: name });
+  };
+
+  const updateTaskStart = () => {
+    const start = document.querySelector('#addTaskStart').value;
+
+    dispatch({ type: 'UPDATE_TASKSTART', payload: start });
+  };
+
+  const updateTaskEnd = () => {
+    const end = document.querySelector('#addTaskEnd').value;
+
+    dispatch({ type: 'UPDATE_TASKEND', payload: end });
+  };
+
+  const submitAddTask = () => {
+    dispatch({ type: 'SUBMIT_TASK' });
+    dispatch({ type: 'ADDTASK_MODAL', payload: false });
   };
 
   const placeholder = () => {
@@ -220,6 +268,7 @@ const Schedule = ({
 
   return (
     <Wrapper>
+      {/* Check In Modal */}
       <ReactModal
         isOpen={checkInModal}
         onRequestClose={closeCheckIn}
@@ -257,6 +306,37 @@ const Schedule = ({
         <SubmitButton onClick={submitCheckIn}>Submit</SubmitButton>
       </ReactModal>
 
+      {/* Add Task Modal */}
+      <ReactModal
+        isOpen={addTaskModal}
+        onRequestClose={closeAddTaskModal}
+        style={ModalStyle}
+        contentLabel='Add Task Modal'
+      >
+        <ModalHeader>Add a Task</ModalHeader>
+        <ModalInput
+          value={addTaskModalState.name}
+          placeholder='Task'
+          onChange={updateTaskName}
+          id='addTaskName'
+        />
+        <ModalInput
+          value={addTaskModalState.start}
+          placeholder='Start Time'
+          onChange={updateTaskStart}
+          id='addTaskStart'
+        />
+        <ModalInput
+          value={addTaskModalState.end}
+          placeholder='End Time'
+          onChange={updateTaskEnd}
+          id='addTaskEnd'
+        />
+        <SubmitButton onClick={submitAddTask} style={{ marginTop: '20px' }}>
+          Add Task
+        </SubmitButton>
+      </ReactModal>
+
       <Greeting>Hi, {user.firstName}</Greeting>
       {Object.keys(checkIn).length > 0 && (
         <Completed>
@@ -291,6 +371,8 @@ const mapStateToProps = (state) => ({
   checkIn: state.checkIn,
   checkInModal: state.checkInModal,
   checkInModalState: state.checkInModalState,
+  addTaskModal: state.addTaskModal,
+  addTaskModalState: state.addTaskModalState,
 });
 
 export default connect(mapStateToProps)(Schedule);

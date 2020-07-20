@@ -102,6 +102,12 @@ const initialState = {
     button: 0,
     thoughts: '',
   },
+  addTaskModal: false,
+  addTaskModalState: {
+    name: '',
+    start: '',
+    end: '',
+  },
 };
 
 function reducer(state = initialState, action) {
@@ -132,6 +138,58 @@ function reducer(state = initialState, action) {
         checkInModalState: {
           button: 0,
           thoughts: '',
+        },
+      };
+    case 'ADDTASK_MODAL':
+      return {
+        ...state,
+        addTaskModal: action.payload,
+      };
+    case 'UPDATE_TASKNAME':
+      return {
+        ...state,
+        addTaskModalState: {
+          ...state.addTaskModalState,
+          name: action.payload,
+        },
+      };
+    case 'UPDATE_TASKSTART':
+      return {
+        ...state,
+        addTaskModalState: {
+          ...state.addTaskModalState,
+          start: action.payload,
+        },
+      };
+    case 'UPDATE_TASKEND':
+      return {
+        ...state,
+        addTaskModalState: {
+          ...state.addTaskModalState,
+          end: action.payload,
+        },
+      };
+    case 'SUBMIT_TASK':
+      return {
+        ...state,
+        curUser: {
+          ...state.curUser,
+          events: [
+            ...state.curUser.events,
+            {
+              name: state.addTaskModalState.name,
+              start: state.addTaskModalState.start,
+              end: state.addTaskModalState.end,
+              type: 'event',
+              id: state.curUser.events.length + 1,
+            },
+          ],
+          eventCount: state.curUser.eventCount + 1,
+        },
+        addTaskModalState: {
+          name: '',
+          start: '',
+          end: '',
         },
       };
     case 'CHECKIN_MODAL':
