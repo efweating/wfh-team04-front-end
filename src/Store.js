@@ -112,6 +112,32 @@ const initialState = {
 };
 
 function reducer(state = initialState, action) {
+  const mutateArray = (item) => {
+    var result;
+
+    if (item.type === 'assigned') {
+      result = state.curUser.assigned;
+
+      for (var i = 0; i < result.length; i++) {
+        if (result[i].id === item.id) {
+          result.splice(i, 1);
+        }
+      }
+    }
+
+    if (item.type === 'event') {
+      result = state.curUser.events;
+
+      for (i = 0; i < result.length; i++) {
+        if (result[i].id === item.id) {
+          result.splice(i, 1);
+        }
+      }
+    }
+
+    return result;
+  };
+
   switch (action.type) {
     case 'BYPASS_LOGIN':
       return {
@@ -135,6 +161,14 @@ function reducer(state = initialState, action) {
         checkIn: action.payload,
         curUser: {
           ...state.curUser,
+          events:
+            action.payload.type === 'event'
+              ? mutateArray(action.payload)
+              : state.curUser.events,
+          assigned:
+            action.payload.type === 'assigned'
+              ? mutateArray(action.payload)
+              : state.curUser.assigned,
           responses: {
             ...state.curUser.responses,
             noresponse: state.curUser.responses.noresponse + 1,
