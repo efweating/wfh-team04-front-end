@@ -120,9 +120,9 @@ const SectionHeader2 = styled(SectionHeader)`
   padding: 20px 0 0 0;
 `;
 
-const Dashboard = ({ user, recommended } = this.props) => {
-  const viewStats = () => {
-    console.log('Checking stats!');
+const Dashboard = ({ user, recommended, dispatch } = this.props) => {
+  const viewStats = (flip) => {
+    dispatch({ type: 'SHOW_RESPONSES', payload: flip });
   };
 
   return (
@@ -145,7 +145,9 @@ const Dashboard = ({ user, recommended } = this.props) => {
           <Label>No Response</Label>
         </SingleStat>
       </StatContainer>
-      <Button onClick={viewStats}>View responses and check in</Button>
+      <Button onClick={() => viewStats(true)}>
+        View responses and check in
+      </Button>
       <NewsBlock>
         <SectionHeader2>
           These articles may help you while working from home

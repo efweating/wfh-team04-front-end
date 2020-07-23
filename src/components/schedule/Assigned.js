@@ -52,7 +52,7 @@ const SubText = styled.p`
   color: #999999;
 `;
 
-const Assigned = ({ task, complete, check }) => {
+const Assigned = ({ task, complete, check, response }) => {
   const completeItem = () => {
     complete(task);
   };
@@ -60,7 +60,10 @@ const Assigned = ({ task, complete, check }) => {
   return (
     <Wrapper
       onClick={completeItem}
-      style={check && { border: 'none', width: '250px' }}
+      style={
+        (check && { border: 'none', width: '250px' }) ||
+        (response && { border: 'none', width: '100%', background: '#f8f8f8' })
+      }
     >
       <Icon src={Check} />
       <TextContainer>

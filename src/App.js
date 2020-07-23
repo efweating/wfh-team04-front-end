@@ -14,8 +14,9 @@ import Tips from './components/pages/Tips';
 import Navbar from './components/layout/Navbar';
 import Login from './components/auth/Login';
 import SignIn from './components/auth/SignIn';
+import Responses from './components/pages/Responses';
 
-function App({ loggedIn } = this.props) {
+function App({ loggedIn, responseScreen } = this.props) {
   return (
     <div className='App'>
       <Router>
@@ -38,7 +39,17 @@ function App({ loggedIn } = this.props) {
           />
           <Route
             path='/'
-            render={() => (loggedIn ? <Dashboard /> : <Redirect to='/login' />)}
+            render={() =>
+              loggedIn ? (
+                responseScreen ? (
+                  <Responses />
+                ) : (
+                  <Dashboard />
+                )
+              ) : (
+                <Redirect to='/login' />
+              )
+            }
           />
         </Switch>
         {loggedIn && <Navbar />}
@@ -49,6 +60,7 @@ function App({ loggedIn } = this.props) {
 
 const mapStateToProps = (state) => ({
   loggedIn: state.loggedIn,
+  responseScreen: state.responseScreen,
 });
 
 export default connect(mapStateToProps)(App);

@@ -108,6 +108,7 @@ const initialState = {
     start: '',
     end: '',
   },
+  responseScreen: false,
 };
 
 function reducer(state = initialState, action) {
@@ -116,6 +117,11 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         loggedIn: true,
+      };
+    case 'SHOW_RESPONSES':
+      return {
+        ...state,
+        responseScreen: action.payload,
       };
     case 'LOGIN_USER':
       return {
@@ -219,6 +225,10 @@ function reducer(state = initialState, action) {
         {
           ...state.checkIn,
           message: state.checkInModalState.thoughts,
+          feel:
+            state.checkInModalState.button === 1
+              ? 'productive'
+              : 'unproductive',
         },
       ];
 
